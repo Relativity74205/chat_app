@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+    {% block title %}
+        Chat
+    {% endblock %}
+    {% block script %}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+        <script src="{{ url_for('static', filename='chat.js') }}"></script>
+        <script id="msg_template" type="text/x-handlebars-template">
+            <li>
+                {% raw -%}
+                    {{ username }} ({{ tstamp }}):
+                    {{ msg }} {{ id }}
+                <button class="hide" id="{{ id }}">Hide</button>
+                {%- endraw %}
+            </li>
+        </script>
+    {% endblock %}
+
+
+{% block body %}
+    <h1>Let's Chat</h1>
+
+    <div>
+        <input autocomplete="off" id="channel_name" placeholder="Enter Channel Name">
+        <button id="start_channel">Start New Channel</button>
+        <select id="channels" name="channels" size="5"></select>
+    </div>
+    <br>
+    <div>
+        <input autocomplete="off" id="new_msg">
+        <button id="sent_msg">Sent Message to Channel</button>
+    </div>
+    <br>
+    <div id="msgs">
+        <ul id="msg_list">
+
+        </ul>
+    </div>
+
+
+{% endblock %}
