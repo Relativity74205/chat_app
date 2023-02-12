@@ -1,3 +1,3 @@
-# Project 2
+# Small prototype chat app with python
 
-Web Programming with Python and JavaScript
+some experiments with sockets
